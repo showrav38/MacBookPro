@@ -1,16 +1,20 @@
+// taking the value and show tham on place and call total balance function
 function prizeAmount(itemName, prize) {
   const prevItemText = document.getElementById(itemName);
-  const prevMemoryCost = parseInt(prevItemText.innerText);
+//   const prevMemoryCost = parseInt(prevItemText.innerText);
   const defualtCapacityPrize = prize;
   prevItemText.innerText = defualtCapacityPrize;
   totalBalance();
 }
 
+// function for don't repeat code on total balance
 function getInputValue(inputId) {
   const inputSectiontext = document.getElementById(inputId);
   const inputSectionAmount = parseInt(inputSectiontext.innerText);
   return inputSectionAmount;
 }
+
+// calculating total balance
 function totalBalance() {
   const bestPrize = getInputValue("best-prize");
   const extraMemoryCost = getInputValue("memory-cost");
@@ -25,8 +29,7 @@ function totalBalance() {
   const footerTotalText = document.getElementById("total-balance");
   const footerTotalAmount = parseInt(footerTotalText.innerText);
   footerTotalText.innerText = total;
-  // const bestPrizetext = document.getElementById('best-prize');
-  // const bestPrizeAmount = parseInt(bestPrizetext.innerText);
+
 }
 
 document
@@ -65,18 +68,18 @@ document
     prizeAmount("delivery-charge", 20);
   });
 
-document.getElementById("apply-btn").addEventListener("click", function (){
+//work on apply button for bonus
+document.getElementById("apply-btn").addEventListener("click", function () {
   const applyInputText = document.getElementById("apply-field");
   const applyInputAmount = applyInputText.value;
-  if (applyInputAmount == 'stevekaku') {
+  if (applyInputAmount == "stevekaku") {
     const footerTotalText = document.getElementById("total-balance");
     const footerTotalAmount = parseInt(footerTotalText.innerText);
     const twentyPercent = footerTotalAmount / 20;
     const afterDiscount = footerTotalAmount - twentyPercent;
     footerTotalText.innerText = afterDiscount;
+  } else {
+    console.log("wrong promo code");
   }
-  else{
-      console.log('wrong promo code');
-  }
-  applyInputText.value = '';
+  applyInputText.value = "";
 });
