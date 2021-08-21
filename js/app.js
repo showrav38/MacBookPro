@@ -63,10 +63,10 @@ document.getElementById('apply-btn').addEventListener('click', function () {
   const applyInputText = document.getElementById('apply-field');
   const applyInputAmount = applyInputText.value;
   if (applyInputAmount == 'stevekaku') {
+    const totalAmount = getInputValue('total');
     const footerTotalText = document.getElementById('total-balance');
-    const footerTotalAmount = parseInt(footerTotalText.innerText);
-    const twentyPercent = footerTotalAmount / 20;
-    const afterDiscount = footerTotalAmount - twentyPercent;
+    const twentyPercent = (totalAmount / 100)* 20;
+    const afterDiscount = totalAmount - twentyPercent;
     footerTotalText.innerText = afterDiscount;
   } else {
     console.log('wrong promo code');
